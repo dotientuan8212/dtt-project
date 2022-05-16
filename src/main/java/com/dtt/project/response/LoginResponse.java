@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dtt.project.exceptions;
+package com.dtt.project.response;
 
 import lombok.Data;
 
@@ -12,9 +12,7 @@ import lombok.Data;
  * @author TuanDT
  */
 @Data
-public class ErrorMessage {
-
-    private String codeMessage;
-    private String message;
-
+public class LoginResponse {
+    private String token;
+    
 }
