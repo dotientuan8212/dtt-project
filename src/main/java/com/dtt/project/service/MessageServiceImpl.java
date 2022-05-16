@@ -26,6 +26,7 @@ public class MessageServiceImpl implements MessageService {
         messageMap.put("email_required", "email required");
         messageMap.put("password_required", "password required");
         messageMap.put("phone_required", "phone required");
+        messageMap.put("success", "success");
         message = messageMap.get(codeMessage);
         return message;
     }

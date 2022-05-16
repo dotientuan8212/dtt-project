@@ -13,6 +13,7 @@ import com.dtt.project.provider.BindingResultProvider;
 import com.dtt.project.request.CreateUserRequest;
 import com.dtt.project.request.GetUserRequest;
 import com.dtt.project.service.MessageService;
+import com.dtt.project.util.CodeMessageUtil;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -91,11 +92,13 @@ public class UserController {
             e.fillInStackTrace();
         } finally {
             if (httpStatus.isError()) {
-                errorMessage.setError(code);
-                errorMessage.setErrorDescription(message);
+                errorMessage.setCodeMessage(code);
+                errorMessage.setMessage(message);
                 return new ResponseEntity<>(errorMessage, httpStatus);
             }
         }
+        errorMessage.setCodeMessage(CodeMessageUtil.SUCCESS);
+        errorMessage.setMessage(messageDao.getMessageByName(CodeMessageUtil.SUCCESS));
         return ResponseEntity.ok(ud);
     }
 

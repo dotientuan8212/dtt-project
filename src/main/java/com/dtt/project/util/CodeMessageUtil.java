@@ -3,18 +3,13 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dtt.project.exceptions;
-
-import lombok.Data;
+package com.dtt.project.util;
 
 /**
  *
  * @author TuanDT
  */
-@Data
-public class ErrorMessage {
+public class CodeMessageUtil {
 
-    private String codeMessage;
-    private String message;
-
+    public static String SUCCESS = "success";
 }
