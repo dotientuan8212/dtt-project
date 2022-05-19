@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dtt.project.provider;
+package com.dtt.project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -16,7 +16,7 @@ import org.springframework.validation.FieldError;
  * @author TuanDT
  */
 @Service
-public class BindingResultProvider {
+public class BindingResultService {
 
     @Autowired
     private MessageSource messageSource;

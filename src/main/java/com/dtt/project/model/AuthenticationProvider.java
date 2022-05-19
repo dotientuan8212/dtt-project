@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dtt.project.service;
+package com.dtt.project.model;
 
 /**
  *
  * @author TuanDT
  */
-public interface MessageService {
-    String getMessageByName(String codeMessage);
+public enum AuthenticationProvider {
+    LOCAL, GOOGLE
 }

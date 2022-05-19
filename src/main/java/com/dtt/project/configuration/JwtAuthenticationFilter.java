@@ -6,7 +6,7 @@
 package com.dtt.project.configuration;
 
 import com.dtt.project.service.UserDetailServiceImpl;
-import com.dtt.project.provider.TokenProvider;
+import com.dtt.project.service.TokenService;
 import java.io.IOException;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -27,7 +27,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Autowired
-    private TokenProvider tokenProvider;
+    private TokenService tokenProvider;
     
     @Autowired
     private UserDetailServiceImpl userDetailServiceImpl;

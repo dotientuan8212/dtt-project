@@ -5,6 +5,7 @@
  */
 package com.dtt.project.service;
 
+import com.dtt.project.service.user.UserServiceImpl;
 import com.dtt.project.entity.User;
 import com.dtt.project.model.UserPrincipalCustom;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserDetailServiceImpl implements UserDetailsService{
 
     @Autowired
-    private UserService userService;
+    private UserServiceImpl userService;
     
     @Override
     @Transactional
