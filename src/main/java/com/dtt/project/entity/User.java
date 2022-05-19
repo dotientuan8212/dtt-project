@@ -5,17 +5,23 @@
  */
 package com.dtt.project.entity;
 
+import com.dtt.project.model.AuthenticationProvider;
 import java.io.Serializable;
 import java.util.Date;
-import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.Id;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  *
  * @author TuanDT
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class User implements Serializable {
 
     @Id
@@ -38,5 +44,7 @@ public class User implements Serializable {
     private String lastModifiedBy;
     
     private Date lastModifiedDate;
-
+    
+    @Enumerated(EnumType.STRING)
+    private AuthenticationProvider authProvider;
 }

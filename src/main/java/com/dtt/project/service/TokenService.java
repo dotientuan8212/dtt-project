@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.dtt.project.provider;
+package com.dtt.project.service;
 
 import com.dtt.project.entity.User;
 import io.jsonwebtoken.Claims;
@@ -15,6 +15,7 @@ import io.jsonwebtoken.UnsupportedJwtException;
 import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 /**
@@ -22,17 +23,18 @@ import org.springframework.stereotype.Service;
  * @author TuanDT
  */
 @Service
-public class TokenProvider {
+public class TokenService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(TokenProvider.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(TokenService.class);
 
-    private final String JWT_SECRET = "lodaaaaaa";
+    @Value("jwt.tokensecret")
+    private String JWT_SECRET;
 
-    private final long JWT_EXPIRATION = 604800000L;
+    private long JWT_EXPIRATION = 604800000L;
 
     public String generateToken(User userDetails) {
         Date now = new Date();
-        Date expiryDate = new Date(now.getTime() + JWT_EXPIRATION);
+        Date expiryDate = new Date(now.getTime() +  JWT_EXPIRATION);
         return Jwts.builder()
                 .setSubject(userDetails.getEmailAddress())
                 .setIssuedAt(now)

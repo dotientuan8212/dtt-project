@@ -6,7 +6,6 @@
 package com.dtt.project.configuration;
 
 import com.dtt.project.exceptions.CustomAuthenticationEntryPoint;
-import com.dtt.project.service.MessageService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -52,8 +51,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint())
                 .and()
                 .authorizeRequests()
-                .antMatchers("/project/v1/get-user",
-                        "/project/v1/insert-user"
+                .antMatchers(
+                        "/project/v1/create-user",
+                        "/project/v1/authentication/login"
                 )
                 .permitAll().anyRequest()
                 .authenticated();
@@ -66,4 +66,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+
 }
