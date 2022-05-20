@@ -53,7 +53,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers(
                         "/project/v1/create-user",
-                        "/project/v1/authentication/login"
+                        "/project/v1/authentication/login",
+                        "/project/v1/get-all-user"
+                        
                 )
                 .permitAll().anyRequest()
                 .authenticated();
@@ -66,5 +68,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public AuthenticationManager authenticationManagerBean() throws Exception {
         return super.authenticationManagerBean();
     }
+    
+    
 
 }

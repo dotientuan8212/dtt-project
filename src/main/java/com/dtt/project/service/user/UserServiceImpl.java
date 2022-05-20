@@ -8,8 +8,11 @@ package com.dtt.project.service.user;
 import com.dtt.project.entity.User;
 import com.dtt.project.exceptions.HandlerException;
 import com.dtt.project.repository.UserRepository;
+import com.dtt.project.response.UserDetail;
 import com.dtt.project.service.BindingResultService;
 import com.dtt.project.service.message.MessageService;
+import java.util.ArrayList;
+import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,6 +67,25 @@ public class UserServiceImpl implements UserService {
         } catch (Exception e) {
             e.fillInStackTrace();
         }
+    }
+
+    @Override
+    public List<UserDetail> getAllUser() throws HandlerException {
+        List<UserDetail> listUserDetail = new ArrayList<>();
+        try {
+            List<User> users = userRepository.findAllUser();
+            for (User en : users) {
+                UserDetail userDetail= new UserDetail();
+                userDetail.setId(en.getId());
+                userDetail.setEmail(en.getEmailAddress());
+                userDetail.setPhoneNumber(en.getPhoneNumber());
+                userDetail.setUserName(en.getName());
+                listUserDetail.add(userDetail);
+            }
+        } catch (Exception e) {
+            e.fillInStackTrace();
+        }
+        return listUserDetail;
     }
 
 }

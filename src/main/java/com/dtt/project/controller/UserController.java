@@ -5,16 +5,18 @@
  */
 package com.dtt.project.controller;
 
-import com.dtt.project.service.user.UserServiceImpl;
 import com.dtt.project.entity.User;
 import com.dtt.project.exceptions.ErrorMessage;
 import com.dtt.project.exceptions.HandlerException;
 import com.dtt.project.service.BindingResultService;
 import com.dtt.project.request.CreateUserRequest;
 import com.dtt.project.request.GetUserRequest;
+import com.dtt.project.response.UserDetail;
 import com.dtt.project.service.message.MessageService;
 import com.dtt.project.service.user.UserService;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -65,6 +67,17 @@ public class UserController {
         return ResponseEntity.ok(ud);
     }
 
+    @GetMapping("get-all-user")
+    public ResponseEntity<Object> getAllUser(HttpServletRequest request, HttpServletResponse response) {
+        List<UserDetail> users = new ArrayList<>();
+        try {
+            users = userDao.getAllUser();
+        } catch (Exception e) {
+            e.fillInStackTrace();
+        }
+        return ResponseEntity.ok(users);
+    }
+
     @PostMapping("create-user")
     public ResponseEntity<Object> insertUser(HttpServletRequest request, HttpServletResponse response, @RequestBody @Valid CreateUserRequest payload, BindingResult result) {
         User ud = new User();
@@ -92,9 +105,9 @@ public class UserController {
             code = e.getErrorCode();
             message = e.getMessage();
             httpStatus = e.getStatus();
-            LOGGER.error(e.getMessage(),e);
+            LOGGER.error(e.getMessage(), e);
         } catch (Exception e) {
-            LOGGER.error(e.getMessage(),e);
+            LOGGER.error(e.getMessage(), e);
         } finally {
             if (httpStatus.isError()) {
                 errorMessage.setCodeMessage(code);

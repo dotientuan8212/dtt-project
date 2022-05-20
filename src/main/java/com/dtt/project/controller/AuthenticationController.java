@@ -23,7 +23,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCrypt;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -47,10 +46,10 @@ public class AuthenticationController {
     private MessageService messageDao;
 
     @Autowired
-    BindingResultService bindingResultProvider;
+    private BindingResultService bindingResultProvider;
 
     @Autowired
-    TokenService tokenService;
+    private TokenService tokenService;
 
     @PostMapping("login")
     public ResponseEntity<Object> login(HttpServletRequest request, HttpServletResponse response, @RequestBody @Valid LoginRequest payload, BindingResult result) {

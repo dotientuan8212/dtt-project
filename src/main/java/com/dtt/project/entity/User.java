@@ -25,7 +25,7 @@ import lombok.NoArgsConstructor;
 public class User implements Serializable {
 
     @Id
-    private int id;
+    private Long id;
 
     private Boolean enabled;
 

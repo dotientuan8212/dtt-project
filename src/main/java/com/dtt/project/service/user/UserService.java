@@ -7,6 +7,8 @@ package com.dtt.project.service.user;
 
 import com.dtt.project.entity.User;
 import com.dtt.project.exceptions.HandlerException;
+import com.dtt.project.response.UserDetail;
+import java.util.List;
 
 /**
  *
@@ -17,4 +19,6 @@ public interface UserService {
     User getUserByEmail(String email) throws HandlerException;
 
     void insertUser(User user) throws HandlerException;
+    
+    List<UserDetail> getAllUser() throws HandlerException;
 }

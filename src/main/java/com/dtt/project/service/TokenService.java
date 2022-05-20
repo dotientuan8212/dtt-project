@@ -30,7 +30,7 @@ public class TokenService {
     @Value("jwt.tokensecret")
     private String JWT_SECRET;
 
-    private long JWT_EXPIRATION = 604800000L;
+    private final long JWT_EXPIRATION = 604800000L;
 
     public String generateToken(User userDetails) {
         Date now = new Date();
